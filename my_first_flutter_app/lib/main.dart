@@ -1,5 +1,84 @@
 import 'package:flutter/material.dart';
 
+class Profile {
+  String? name;
+  String? courseSection;
+  int? age;
+  String? hobby;
+  double? height;
+  bool isStudent;
+  String imagePath;
+  Color color;
+
+  Profile({
+    required this.name,
+    required this.courseSection,
+    required this.age,
+    required this.hobby,
+    required this.height,
+    required this.isStudent,
+    required this.imagePath,
+    required this.color,
+  });
+}
+
+List<Profile> profiles = [
+  Profile(
+    name: "Gojo",
+    courseSection: "Special Sorcerer",
+    age: 21,
+    hobby: null,
+    height: 5.9,
+    isStudent: true,
+    imagePath: "assets/images.jpg",
+    color: Colors.purple
+  ),
+
+  Profile(
+    name: null,
+    courseSection: "CURSE",
+    age: null,
+    hobby: null,
+    height: null,
+    isStudent: false,
+    imagePath: "assets/sukuna.avif",
+      color: Colors.red
+  ),
+
+  Profile(
+    name: "Toji",
+    courseSection: null,
+    age: 30,
+    hobby: null,
+    height: 6.2,
+    isStudent: false,
+    imagePath: "assets/Toji1.jfif",
+      color: Colors.green
+  ),
+
+  Profile(
+    name: "Yuji",
+    courseSection: "Sorcerer",
+    age: 18,
+    hobby: "Running",
+    height: 5.8,
+    isStudent: true,
+    imagePath: "assets/yuji.jfif",
+      color: Colors.blue
+  ),
+
+  Profile(
+    name: "Yuta",
+    courseSection: null,
+    age: 22,
+    hobby: "Travel",
+    height: 5.9,
+    isStudent: true,
+    imagePath: "assets/yuta.jfif",
+      color: Colors.orange
+  ),
+];
+
 void main() {
   runApp(const MyApp());
 }
@@ -12,133 +91,41 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'My First Flutter Application',
-
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('My First Flutter Application'),
+          title: const Text('My Third Flutter Application'),
         ),
+        body: ListView(
+          children: profiles.map((profile) {
+            return Card(
+              color: profile.color,
 
-        body: Center(
-          child: Column(
-            children: [
-              Card(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const CircleAvatar(
-                      radius: 100,
-                      backgroundImage: AssetImage('assets/images.jpg'),
-                    ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    radius: 100,
+                    backgroundImage: AssetImage(profile.imagePath),
+                  ),
 
-                    const SizedBox(height: 15),
-
-                    const Text(
-                      'Moreno, Anthony Josh',
-                      style: TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-
-                    const SizedBox(height: 10),
-
-                    const Text(
-                      'BSIT 3',
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-
-                    const SizedBox(height: 10),
-
-                    const Text(
-                      'My First Flutter Application',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-
-                    const SizedBox(height: 10),
-
-                    const Text(
-                      'August 4, 2026',
-                      style: TextStyle(
-                        fontSize: 14,
-                      ),
-                    ),
-
-                    const Text(
-                      'Gym',
-                      style: TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-
-                    const SizedBox(height: 15),
-
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                  Padding(
+                    padding: const EdgeInsets.all(25.0),
+                    child: Column(
                       children: [
-                        Text('21'),
-                        Text('August 4,2005'),
+                        Text(profile.name ?? "Name: not provided",),
+                        Text(profile.courseSection ?? "Unknown",),
+                        Text('Age: ${profile.age ?? "Unkown"}'),
+                        Text('Hobby: ${profile.hobby ?? "not provided"}'),
+                        Text('Height: ${profile.height ?? "Missing"}',),
+                        Text('Student: ${profile.isStudent}',),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-
-              const SizedBox(height: 15),
-
-              Card(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'MY FAVORITES',
-                      style: TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-
-                    const SizedBox(height: 15),
-
-                    const Text(
-                      'Favorite Game: Growtopia',
-                      style: TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-
-                    const SizedBox(height: 10),
-
-                    const Text(
-                      'Favorite Food: Burger',
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    ),
-
-                    const SizedBox(height: 15),
-
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text('Favorite Movie: '),
-                        Text('Spider-Man'),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            );
+          }).toList(),
         ),
       ),
     );
