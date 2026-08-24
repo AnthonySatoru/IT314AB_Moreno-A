@@ -13,6 +13,7 @@ class Profile {
   bool isStudent;
   String imagePath;
   Color color;
+  bool isFavorite;
 
   Profile({
     required this.studentId,
@@ -27,6 +28,7 @@ class Profile {
     required this.isStudent,
     required this.imagePath,
     required this.color,
+    required this.isFavorite
   });
 }
 
@@ -44,6 +46,7 @@ List<Profile> profiles = [
     isStudent: true,
     imagePath: "assets/ayanokoji.jfif",
     color: Colors.purple,
+    isFavorite: false,
   ),
 
   Profile(
@@ -59,6 +62,7 @@ List<Profile> profiles = [
     isStudent: true,
     imagePath: "assets/Suzune Horikita.jfif",
     color: Colors.red,
+    isFavorite: false,
   ),
 
   Profile(
@@ -74,6 +78,7 @@ List<Profile> profiles = [
     isStudent: true,
     imagePath: "assets/Kakeru Ryuen 2.jfif",
     color: Colors.green,
+    isFavorite: false,
   ),
 
   Profile(
@@ -89,6 +94,7 @@ List<Profile> profiles = [
     isStudent: true,
     imagePath: "assets/Kikyo Kushida.jfif",
     color: Colors.blue,
+    isFavorite: false,
   ),
 
   Profile(
@@ -104,6 +110,7 @@ List<Profile> profiles = [
     isStudent: true,
     imagePath: "assets/Airi Sakura.jfif",
     color: Colors.orange,
+    isFavorite: false,
   ),
 
   Profile(
@@ -119,6 +126,7 @@ List<Profile> profiles = [
     isStudent: true,
     imagePath: "assets/Kei Karuizawa.jfif",
     color: Colors.pink,
+    isFavorite: false,
   ),
 ];
 
@@ -129,9 +137,14 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -140,7 +153,7 @@ class MyApp extends StatelessWidget {
 
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('My Fourth Flutter Application'),
+          title: const Text('My Fifth Flutter Application'),
         ),
 
         body: profiles.isEmpty
@@ -156,67 +169,144 @@ class MyApp extends StatelessWidget {
           itemBuilder: (context, index) {
             final profile = profiles[index];
 
-            return Card(
-              color: profile.color,
+            return GestureDetector(
+              onTap: (){
+                print("Student Card tapped: ${profile.name}",);
+              },
 
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+              child: Card(
+                color: profile.color,
 
-                children: [
-                  CircleAvatar(
-                    radius: 100,
-                    backgroundImage: AssetImage(
-                      profile.imagePath,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+
+                  children: [
+                    CircleAvatar(
+                      radius: 100,
+                      backgroundImage: AssetImage(
+                        profile.imagePath,
+                      ),
                     ),
-                  ),
 
-                  Padding(
-                    padding: const EdgeInsets.all(25.0),
+                    Padding(
+                      padding: const EdgeInsets.all(25),
 
-                    child: Column(
-                      children: [
-                        Text(
-                          profile.name ??
-                              "Name: not provided",
-                        ),
+                      child: Column(
+                        children: [
+                          Text(
+                            profile.name ?? "Name: not provided",),
 
-                        Text(
-                          profile.courseSection ??
-                              "Unknown",
-                        ),
+                          Text(
+                            profile.courseSection ?? "Unknown",),
 
-                        Text(
-                          'Year Level: ${profile.yearLevel ?? "Unknown"}',
-                        ),
+                          Text(
+                            'Year Level: ${profile.yearLevel ?? "Unknown"}',
+                          ),
 
-                        Text(
-                          'Favourite Subject: ${profile.favouriteSubject ?? "Unknown"}',
-                        ),
+                          Text(
+                            'Favourite Subject: ${profile.favouriteSubject ?? "Unknown"}',
+                          ),
 
-                        Text(
-                          'Age: ${profile.age ?? "Unknown"}',
-                        ),
+                          Text(
+                            'Age: ${profile.age ?? "Unknown"}',
+                          ),
 
-                        Text(
-                          'Hobby: ${profile.hobby ?? "Not provided"}',
-                        ),
+                          Text(
+                            'Hobby: ${profile.hobby ?? "Not provided"}',
+                          ),
 
-                        Text(
-                          'Height: ${profile.height ?? "Missing"}',
-                        ),
+                          Text(
+                            'Height: ${profile.height ?? "Missing"}',
+                          ),
 
-                        Text(
-                          'Gender: ${profile.gender ?? "Not provided"}',
-                        ),
+                          Text(
+                            'Gender: ${profile.gender ?? "Not provided"}',
+                          ),
 
-                        Text(
-                          'Student: ${profile.isStudent}',
-                        ),
-                      ],
+                          Text(
+                            'Student: ${profile.isStudent}',
+                          ),
+                          const SizedBox(height: 15),
+
+                          Row(mainAxisAlignment:
+                          MainAxisAlignment.center,
+                              children: [
+                                InputChip(
+                                    avatar: Icon(
+                                      Icons.favorite,
+                                      size: 18,
+                                      color: profile.isFavorite ? Colors.red : Colors.grey,
+                                    ),
+                                    label: const Text('Favorite'),
+
+                                    onPressed: (){
+                                      setState((){
+                                        profile.isFavorite = !profile.isFavorite;
+                                      });
+                                      print("Favorite pressed for ${profile.name}",);
+                                    }
+                                ),
+                                const SizedBox(height: 10),
+                                InputChip(
+                                  avatar: const Icon(
+                                    Icons.edit,
+                                    size: 18,),
+                                  label: const Text("Edit"),
+                                  onPressed:(){
+                                    showDialog<void>(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          title: const Text("Edit Student"),
+                                          content: Text(
+                                            "Edit ${profile.name}?",
+                                          ),
+                                          actions: <Widget>[
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: const Text("Cancel"),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                                print(
+                                                  "Edit pressed for ${profile.name}",
+                                                );
+                                              },
+                                              child: const Text("Edit"),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
+                                const SizedBox(height: 10),
+                                InputChip(
+                                  avatar: const Icon(
+                                    Icons.delete,
+                                    size: 18,
+                                  ),
+                                  label: const Text("Delete"),
+                                  onPressed: () {
+                                    setState(() {
+                                      profiles.removeAt(index);
+                                    });
+
+                                    print("Deleted ${profile.name}");
+                                  },
+                                ),
+
+                              ]
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             );
           },

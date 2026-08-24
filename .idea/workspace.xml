@@ -5,30 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db70407b-d955-4b48-8e7f-3d94934578c8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/my_first_flutter_app/assets/Airi Sakura.jfif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_first_flutter_app/assets/Kakeru Ryuen 2.jfif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_first_flutter_app/assets/Kakeru Ryuen.jfif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_first_flutter_app/assets/Kei Karuizawa.jfif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_first_flutter_app/assets/Kikyo Kushida.jfif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_first_flutter_app/assets/Suzune Horikita.jfif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_first_flutter_app/assets/ayanokoji.jfif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_first_flutter_app/assets/Toji1.jfif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_first_flutter_app/assets/gojo.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_first_flutter_app/assets/images.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_first_flutter_app/assets/sukuna.avif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_first_flutter_app/assets/yuji.jfif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_first_flutter_app/assets/yuta.jfif" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/my_first_flutter_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/my_first_flutter_app/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_first_flutter_app/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/my_first_flutter_app/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_first_flutter_app/linux/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/my_first_flutter_app/linux/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_first_flutter_app/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/my_first_flutter_app/linux/flutter/generated_plugins.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_first_flutter_app/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/my_first_flutter_app/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_first_flutter_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/my_first_flutter_app/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_first_flutter_app/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/my_first_flutter_app/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_first_flutter_app/windows/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/my_first_flutter_app/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_first_flutter_app/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/my_first_flutter_app/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
