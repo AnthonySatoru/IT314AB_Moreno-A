@@ -10,19 +10,52 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const MyHomePage(),
+      debugShowCheckedModeBanner: false,
+      home: const SocialPage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+class SocialPage extends StatefulWidget {
+  const SocialPage({super.key});
+
+  @override
+  State<SocialPage> createState() => _SocialPageState();
+}
+
+class _SocialPageState extends State<SocialPage> {
+  List<Map<String, dynamic>> friends = [
+    {
+      'name': 'MissYouLikeKrazy',
+      'status': 'Online - VALORANT',
+      'online': true,
+    },
+    {
+      'name': 'bread',
+      'status': 'Playing - VALORANT',
+      'online': true,
+    },
+    {
+      'name': 'The14th',
+      'status': 'Playing - VALORANT',
+      'online': true,
+    },
+    {
+      'name': 'Carlvendish',
+      'status': 'Away - Riot Mobile',
+      'online': false,
+    },
+    {
+      'name': 'D1yah',
+      'status': 'Away - Riot Mobile',
+      'online': false,
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: const Text(
@@ -34,83 +67,55 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
       ),
-
       body: Column(
         children: [
-          Row(
-            children: [
-              Text(
-                'Friends',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-
-              SizedBox(width: 40),
-
-              Text(
-                'Messages',
-                style: TextStyle(
-                  color: Colors.grey,
-                ),
-              ),
-
-              SizedBox(width: 40),
-
-              Text(
-                'Requests',
-                style: TextStyle(
-                  color: Colors.grey,
-                ),
-              ),
-            ],
-          ),
-    //underline para sa friend
-    Container(
-    margin: EdgeInsets.only(left: 10,),
-    height: 3,
-    width: 50,
-    color: Colors.red,
-    ),
-//for the line margin
-          Container(
-            margin: EdgeInsets.only(top: 1,),
-            height: 2,
-            color: Colors.grey,
-          ),
-//making my search box
-
-          Container(
-            margin: EdgeInsets.only(
-              top: 20,
-              left: 20,
-              right: 20,
-            ),
-            height: 100,
-            decoration: BoxDecoration(
-              color: Colors.grey,
-              borderRadius: BorderRadius.circular(20),
-            ),
+          const Padding(
+            padding: EdgeInsets.all(20),
             child: Row(
               children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 20),
-                  child: Icon(
-                    Icons.search,
-                    color: Colors.black,
-                    size: 50,
+                Text(
+                  'Friends',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-
-                Padding(
-                  padding: EdgeInsets.only(left: 20),
-                  child: Text("Search",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                SizedBox(width: 40),
+                Text(
+                  'Messages',
+                  style: TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
+                SizedBox(width: 40),
+                Text(
+                  'Requests',
+                  style: TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.grey[900],
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: const Row(
+              children: [
+                SizedBox(width: 15),
+                Icon(
+                  Icons.search,
+                  color: Colors.grey,
+                ),
+                SizedBox(width: 10),
+                Text(
+                  'Search',
+                  style: TextStyle(
+                    color: Colors.grey,
                   ),
                 ),
               ],
@@ -152,136 +157,139 @@ class MyHomePage extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(
-              left: 50,
-              top: 20,
-            ),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.person,
-                  color: Colors.red,
-                  size: 40,
-                ),
-                SizedBox(
-                  width: 15,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "MissyoulikeKrazy",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                    Row(
-                        children:[
-                          Icon(
-                              Icons.monitor,color: Colors.green,size: 20),
-                          Text(
-                            "Online - VALORANT",
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ]
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-              left: 50,
-              top: 20,
-            ),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.person,
-                  color: Colors.red,
-                  size: 40,
-                ),
-                SizedBox(
-                  width: 15,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "bread",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                    Row(
-                        children:[
-                          Icon(
-                              Icons.monitor,color: Colors.green,size: 20),
-                          Text(
-                            "Online - VALORANT",
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ]
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-              left: 50,
-              top: 20,
-            ),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.person,
-                  color: Colors.red,
-                  size: 40,
-                ),
-                SizedBox(
-                  width: 15,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "The14th",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                    ),
-                    Row(
-                        children:[
-                          Icon(
-                              Icons.monitor,color: Colors.green,size: 20),
-                          Text(
-                            "Online - VALORANT",
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ]
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
+          const SizedBox(height: 20),
+          Expanded(
+            child: ListView.builder(
+              itemCount: friends.length,
+              itemBuilder: (context, index) {
+                String name = friends[index]['name'];
+                String status = friends[index]['status'];
+                bool isOnline = friends[index]['online'];
 
+                return ListTile(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Message(
+                          name: name,
+                        ),
+                      ),
+                    );
+                  },
+                  leading: CircleAvatar(
+                    backgroundColor: Colors.grey[900],
+                    child: const Icon(
+                      Icons.person,
+                      color: Colors.red,
+                    ),
+                  ),
+                  title: Text(
+                    name,
+                    style: const TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  subtitle: Row(
+                    children: [
+                      Icon(
+                        isOnline
+                            ? Icons.monitor
+                            : Icons.mobile_friendly,
+                        color: isOnline
+                            ? Colors.green
+                            : Colors.grey,
+                        size: 16,
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        status,
+                        style: const TextStyle(
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Message extends StatelessWidget {
+  final String name;
+
+  const Message({
+    super.key,
+    required this.name,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        title: Text(
+          name,
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      body: Column(
+        children: [
+          const Expanded(
+            child: Center(
+              child: Text(
+                '',
+                style: TextStyle(
+                  color: Colors.grey,
+                ),
+              ),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.all(15),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15,
+            ),
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.grey[900],
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: const Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Send a message',
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+                Icon(
+                  Icons.send,
+                  color: Colors.grey,
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
