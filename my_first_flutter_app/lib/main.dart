@@ -14,6 +14,7 @@ class Profile {
   String imagePath;
   Color color;
   bool isFavorite;
+  bool isActive;
 
   Profile({
     required this.studentId,
@@ -28,7 +29,8 @@ class Profile {
     required this.isStudent,
     required this.imagePath,
     required this.color,
-    required this.isFavorite
+    required this.isFavorite,
+    required this.isActive,
   });
 }
 
@@ -47,6 +49,7 @@ List<Profile> profiles = [
     imagePath: "assets/ayanokoji.jfif",
     color: Colors.purple,
     isFavorite: false,
+    isActive: true,
   ),
 
   Profile(
@@ -61,8 +64,9 @@ List<Profile> profiles = [
     gender: "Female",
     isStudent: true,
     imagePath: "assets/Suzune Horikita.jfif",
-    color: Colors.red,
+    color: Colors.cyan,
     isFavorite: false,
+    isActive: false,
   ),
 
   Profile(
@@ -79,6 +83,7 @@ List<Profile> profiles = [
     imagePath: "assets/Kakeru Ryuen 2.jfif",
     color: Colors.green,
     isFavorite: false,
+    isActive: false,
   ),
 
   Profile(
@@ -95,6 +100,7 @@ List<Profile> profiles = [
     imagePath: "assets/Kikyo Kushida.jfif",
     color: Colors.blue,
     isFavorite: false,
+    isActive: true,
   ),
 
   Profile(
@@ -111,6 +117,7 @@ List<Profile> profiles = [
     imagePath: "assets/Airi Sakura.jfif",
     color: Colors.orange,
     isFavorite: false,
+    isActive: false,
   ),
 
   Profile(
@@ -127,6 +134,7 @@ List<Profile> profiles = [
     imagePath: "assets/Kei Karuizawa.jfif",
     color: Colors.pink,
     isFavorite: false,
+    isActive: true,
   ),
 ];
 
@@ -145,6 +153,18 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 5), () {
+      setState(() {
+        isLoading = false;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -153,14 +173,46 @@ class _MyAppState extends State<MyApp> {
 
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('My Fifth Flutter Application'),
+          title: const Text('My Sixth Flutter Application'),
         ),
-
-        body: profiles.isEmpty
+        body: isLoading
             ? const Center(
-          child: Text(
-            "No student found",
-            style: TextStyle(fontSize: 25),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircularProgressIndicator(),
+              SizedBox(height: 15),
+              Text(
+                "Loading students",
+                style: TextStyle(fontSize: 20),
+              ),
+            ],
+          ),
+        )
+            : profiles.isEmpty
+            ? Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(
+                Icons.person_off,
+                size: 100,
+                color: Colors.grey,
+              ),
+              const SizedBox(height: 15),
+              const Text(
+                "No students found",
+                style: TextStyle(fontSize: 25),
+              ),
+              const SizedBox(height: 15),
+              ElevatedButton.icon(
+                icon: const Icon(Icons.add),
+                label: const Text("Add Student"),
+                onPressed: () {
+                  print("Add Student pressed");
+                },
+              ),
+            ],
           ),
         )
             : ListView.builder(
@@ -229,9 +281,39 @@ class _MyAppState extends State<MyApp> {
                           ),
                           const SizedBox(height: 15),
 
+                          Text(
+                            profile.isActive ? "Active" : "Inactive",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: profile.isActive ? Colors.green : Colors.red,
+                            ),
+                          ),
+
+                          if (profile.isFavorite)
+                            const Text(
+                              "Favorite Student",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.yellow,
+                              ),
+                            ),
+
+                          if (!profile.isActive)
+                            const Text(
+                              "Warning: This student is inactive",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red
+                              ),
+                            ),
+
+
                           Row(mainAxisAlignment:
                           MainAxisAlignment.center,
                               children: [
+                                if (profile.isActive)
                                 InputChip(
                                     avatar: Icon(
                                       Icons.favorite,
