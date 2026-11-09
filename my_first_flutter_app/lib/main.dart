@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
               const SizedBox(height: 10),
 
               const Text(
-                'My First Flutter Application',
+                'LOL',
                 style: TextStyle(fontSize: 20),
               ),
 
