@@ -2,7 +2,7 @@ name: Deploy Flutter Web to Lightsail
 
 on:
   push:
-    branches: [ main ]
+    branches: [ feature/conditional-ui ]
 
 jobs:
   deploy:
